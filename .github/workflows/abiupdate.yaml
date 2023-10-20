@@ -2,6 +2,10 @@ name: ABI Update
 
 on: 
   workflow_dispatch:
+    inputs:
+      abiprev:
+        description: 'Previous ABI version file'
+        required: true
 
 jobs:
   ABI-Update:
@@ -22,6 +26,7 @@ jobs:
   ABI-Check:
     name: Abi Check
     runs-on: [ubuntu-latest]
+    
     steps:
     - name: Checkout Sources
       uses: actions/checkout@v4
@@ -33,4 +38,4 @@ jobs:
        dh-python dwarves file flex gcc git kmod libdw-dev libelf-dev libiberty-dev libnuma-dev \
        libslang2-dev libssl-dev libtool lintian lz4 python3-minimal rsync sphinx-common xmlto zlib1g-dev zstd
     - name: ABI check
-      run: debian/scripts/abi-check 
+      run: debian/scripts/abi-check ${{ github.event.inputs.abiprev }}
