@@ -20,6 +20,8 @@ jobs:
        sudo apt-get update && sudo apt-get install asciidoc-base automake bc bison cpio debhelper-compat \
        dh-python dwarves file flex gcc git kmod libdw-dev libelf-dev libiberty-dev libnuma-dev \
        libslang2-dev libssl-dev libtool lintian lz4 python3-minimal rsync sphinx-common xmlto zlib1g-dev zstd
+    - name: create build-dir
+      run: make build-dir-fresh
     - name: Build Kernel
       run: make deb
     - name: Upload Artifacts
