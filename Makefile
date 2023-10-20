@@ -120,7 +120,7 @@ $(ZFSDIR).prepared: $(ZFSONLINUX_SUBMODULE)
 	rm -rf $(BUILD_DIR)/$(MODULES)/$(ZFSDIR) $(BUILD_DIR)/$(MODULES)/tmp $@
 	mkdir -p $(BUILD_DIR)/$(MODULES)/tmp
 	cp -a $(ZFSONLINUX_SUBMODULE)/* $(BUILD_DIR)/$(MODULES)/tmp
-	cd $(BUILD_DIR)/$(MODULES)/tmp; sh autogen.sh; sh configure; make kernel
+	cd $(BUILD_DIR)/$(MODULES)/tmp; make
 	rm -rf $(BUILD_DIR)/$(MODULES)/tmp
 	touch $(ZFSDIR).prepared
 
